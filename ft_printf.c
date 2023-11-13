@@ -16,8 +16,7 @@ int ft_printf(char const *format, ...)
 {
     va_list c;
     va_start(c, format);
-
-    int value = va_arg(c, int);
    
     va_end(c);
+    return (0);
 }

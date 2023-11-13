@@ -2,9 +2,9 @@ NAME = libftprintf.a
 
 RM = rm -f
 
-CC = gcc
+cc = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
 SRCs = ft_printf.c 
 
@@ -13,17 +13,17 @@ OBJs = $(SRCs:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJs)
-		ar rcs $(NAME) $(OBJs)
+	ar rcs $(NAME) $(OBJs)
 
-
-%.o : %.c 
+$.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 
-clean : $(RM) $(OBJs)
+clean : 
+	$(RM) $(OBJs) 
 
 
-fclean : clean	
+fclean : clean 
 	$(RM) $(NAME)
 
 
