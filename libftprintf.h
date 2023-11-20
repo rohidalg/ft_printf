@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF
-#define LIBFTPRINTF
-#include <unistd.h>
-#include <stdio.h>
-#include <libc.h>
-#include <stdarg.h>
+# define LIBFTPRINTF
+# include <libc.h>
+# include <stdarg.h>
+# include <stdio.h>
+# include <unistd.h>
 
-extern int ft_printf (char const *, ...);
+extern int	ft_printf(char const *str, ...);
 
 #endif

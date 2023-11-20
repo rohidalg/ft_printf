@@ -2,10 +2,12 @@
 #include <ctype.h>
 #include <string.h>
 
-int main(void)
+int	main(void)
 {
-    ft_printf("a");
-    printf("\n");
-    printf("a");
+	char ch = 'a';
 
+	printf("  y vale %d", ft_printf("%c", ch));
+	printf("\n");
+	printf("  y vale %d\n", printf("%c", ch));
+	return (0);
 }
