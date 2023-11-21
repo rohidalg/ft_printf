@@ -12,36 +12,56 @@
 
 #include "libftprintf.h"
 
-int	ft_c(char const *str, va_list *args)
+int	ft_options(char const *str, va_list *args)
 {
 	int		i;
-	char	ch;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
-		if (str[i] == '%' && str[i + 1] == 'c')
-		{
-			ch = va_arg(*args, int);
-			write(1, &ch, 1);
-			i += 2;
-		}
-		else
-		{
-			write(1, &str[i], 1);
-			i++;
-		}
+		if (str[i] == 'c')
+			return (ft_putchar(va_arg(*args, int), 1));
+		else if (str[i] == 's')
+			return (ft_putstr(va_arg(*args, char *), 1));
+		else if (str[i] == 'p')
+		  	return (ft_putstr("0x", 1));
+		// else if (str[i] == 'd')
+		// 	return ();
+		// else if (str[i] == 'i')
+		// 	return ();
+		// else if (str[i] == 'u')
+		// 	return ();
+		// else if (str[i] == 'x')
+		// 	return ();
+		// else if (str[i] == 'X')
+		// 	return ();
+		else if (str[i] == '%')
+	 	return (ft_putchar('%', 1));
+		i++;
 	}
-    return(i);
+	return (0);
 }
 
 int	ft_printf(char const *str, ...)
 {
 	va_list	args;
-	int		result;
+	int		i;
+	int		i_print;
 
 	va_start(args, str);
-	result = ft_c(str, &args);
+	i = 0;
+	i_print = 0;
+	while (str[i])
+	{
+		if (str[i] == '%')
+		{
+			i_print += ft_options(&str[i + 1], &args);
+			i++;
+		}
+		else
+			ft_putchar(str[i], 1);
+		i++;
+	}
 	va_end(args);
-	return (result);
+	return (i_print);
 }

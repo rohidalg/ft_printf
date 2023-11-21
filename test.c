@@ -4,10 +4,11 @@
 
 int	main(void)
 {
-	char ch = 'a';
+	int n = 42;
+	int *pu = &n;
 
-	printf("  y vale %d", ft_printf("%c", ch));
+	printf("  y vale %d", ft_printf("%p", pu));
 	printf("\n");
-	printf("  y vale %d\n", printf("%c", ch));
+	printf("  y vale %d\n", printf("%p", pu));
 	return (0);
 }
