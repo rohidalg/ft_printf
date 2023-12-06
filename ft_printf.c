@@ -29,8 +29,8 @@ int	ft_options(char const *str, va_list *args)
 		 	return (ft_putnbr(va_arg(*args, int),1));
 		else if (str[i] == 'i')
 			return (ft_putnbr(va_arg(*args, int),1));
-		// else if (str[i] == 'u')
-		// 	return ();
+		else if (str[i] == 'u')
+			return (ft_putunsigned(va_arg(*args, int)));
 		// else if (str[i] == 'x')
 		// 	return ();
 		// else if (str[i] == 'X')

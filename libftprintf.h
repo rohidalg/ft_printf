@@ -25,6 +25,10 @@ extern int  ft_pointer(char *s, int fd);
 extern int	ft_nlen(int n);
 extern int	ft_putnbr(int n, int fd);
 extern size_t  ft_strlen(char const *s);
+extern int ft_putunsigned(int n);
+extern char	*ft_itoa(int n);
+
+
 
 
 #endif

@@ -22,9 +22,12 @@ int	ft_putstr(char *s, int fd)
 	size_t	i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
+	if (!s && s == NULL)
+	{
+		ft_putstr("(null)",1);
+		return (6);
+	}
+	while (s[i])
 	{
 		write(fd, &s[i], 1);
 		i++;
@@ -36,13 +39,17 @@ int	ft_nlen(int n)
 {
 	int	i;
 
-	i = 0;
-	while (n != 0)
+	i = 0; 
+	if (n == 0)
 	{
 		n /= 10;
 		i++;
 	}
-
+	while (n)
+	{
+		n /= 10;
+		i++;
+	}
 	return (i);
 }
 
@@ -56,12 +63,14 @@ int	ft_putnbr(int n, int fd)
 		ft_putchar('-', fd);
 		ft_putchar('2', fd);
 		ft_putnbr(147483648, fd);
+		len++;
 	}
 	else if (n < 0)
 	{
 		ft_putchar('-', fd);
 		n = -n;
 		ft_putnbr(n, fd);
+		len++;
 	}
 	else if (n > 9)
 	{
@@ -88,4 +97,40 @@ size_t ft_strlen(char const *s)
 	while (s[i] != '\0')
 		i++;
 	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*num;
+	int		len;
+
+	len = ft_nlen(n);
+	num = (char *)malloc(sizeof(char) * (len + 1));
+	if (!num)
+		return (0);
+	num[len] = '\0';
+	while (n != 0)
+	{
+		num[len - 1] = n % 10 + 48;
+		n = n / 10;
+		len--;
+	}
+	return (num);
+}
+
+int ft_putunsigned(int n)
+{
+	int		i_itoa;
+	char	*itoa;
+
+	i_itoa = 0;
+	if (n == 0)
+		i_itoa += write(1, "0", 1);
+	else
+	{
+		itoa = ft_itoa(n);
+		i_itoa += ft_putstr(itoa, 1);
+		free(itoa);
+	}
+	return (i_itoa);
 }
