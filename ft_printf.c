@@ -24,11 +24,11 @@ int	ft_options(char const *str, va_list *args)
 		else if (str[i] == 's')
 			return (ft_putstr(va_arg(*args, char *), 1));
 		else if (str[i] == 'p')
-		  	return (ft_putstr("0x", 1));
-		// else if (str[i] == 'd')
-		// 	return ();
-		// else if (str[i] == 'i')
-		// 	return ();
+		  	return (ft_pointer(va_arg(*args, char *), 1));
+		else if (str[i] == 'd')
+		 	return (ft_putnbr(va_arg(*args, int),1));
+		else if (str[i] == 'i')
+			return (ft_putnbr(va_arg(*args, int),1));
 		// else if (str[i] == 'u')
 		// 	return ();
 		// else if (str[i] == 'x')
@@ -39,7 +39,7 @@ int	ft_options(char const *str, va_list *args)
 	 	return (ft_putchar('%', 1));
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
 int	ft_printf(char const *str, ...)
@@ -59,7 +59,7 @@ int	ft_printf(char const *str, ...)
 			i++;
 		}
 		else
-			ft_putchar(str[i], 1);
+			i_print += ft_putchar(str[i], 1);
 		i++;
 	}
 	va_end(args);

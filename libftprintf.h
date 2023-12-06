@@ -21,5 +21,10 @@
 extern int	ft_printf(char const *str, ...);
 extern int	ft_putchar(char c, int fd);
 extern int	ft_putstr(char *s, int fd);
+extern int  ft_pointer(char *s, int fd);
+extern int	ft_nlen(int n);
+extern int	ft_putnbr(int n, int fd);
+extern size_t  ft_strlen(char const *s);
+
 
 #endif
