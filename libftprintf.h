@@ -18,17 +18,14 @@
 # include <unistd.h>
 // # include "../libft/libft.h"
 
-extern int	ft_printf(char const *str, ...);
-extern int	ft_putchar(char c, int fd);
-extern int	ft_putstr(char *s, int fd);
-extern int  ft_pointer(char *s, int fd);
-extern int	ft_nlen(int n);
-extern int	ft_putnbr(int n, int fd);
-extern size_t  ft_strlen(char const *s);
-extern int ft_putunsigned(int n);
-extern char	*ft_itoa(int n);
-
-
-
+extern int		ft_printf(char const *str, ...);
+extern int		ft_putchar(char c, int fd);
+extern int		ft_putstr(char *s, int fd);
+extern int		ft_nlen(int n);
+extern int		ft_putnbr(int n, int fd);
+extern size_t	ft_strlen(char const *s);
+extern int		ft_putunsigned(unsigned int n, int fd);
+extern int		ft_puthex_low(unsigned long long n, int fd);
+extern int		ft_puthex_high(unsigned long long n, int fd);
 
 #endif

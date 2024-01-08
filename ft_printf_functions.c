@@ -24,7 +24,7 @@ int	ft_putstr(char *s, int fd)
 	i = 0;
 	if (!s && s == NULL)
 	{
-		ft_putstr("(null)",1);
+		ft_putstr("(null)", 1);
 		return (6);
 	}
 	while (s[i])
@@ -39,7 +39,7 @@ int	ft_nlen(int n)
 {
 	int	i;
 
-	i = 0; 
+	i = 0;
 	if (n == 0)
 	{
 		n /= 10;
@@ -55,7 +55,7 @@ int	ft_nlen(int n)
 
 int	ft_putnbr(int n, int fd)
 {
-	int len;
+	int	len;
 
 	len = ft_nlen(n);
 	if (n == -2147483648)
@@ -82,14 +82,7 @@ int	ft_putnbr(int n, int fd)
 	return (len);
 }
 
-int ft_pointer (char *s, int fd)
-{
-	if (s)
-		ft_putstr(s,fd);
-	return (0);
-}
-
-size_t ft_strlen(char const *s)
+size_t	ft_strlen(char const *s)
 {
 	int	i;
 
@@ -99,38 +92,53 @@ size_t ft_strlen(char const *s)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+int	ft_putunsigned(unsigned int n, int fd)
 {
-	char	*num;
-	int		len;
+	int	len;
 
-	len = ft_nlen(n);
-	num = (char *)malloc(sizeof(char) * (len + 1));
-	if (!num)
-		return (0);
-	num[len] = '\0';
-	while (n != 0)
-	{
-		num[len - 1] = n % 10 + 48;
-		n = n / 10;
-		len--;
-	}
-	return (num);
+	len = 0;
+	if (n > 9)
+		len += ft_putunsigned(n / 10, fd);
+	len += ft_putchar(n % 10 + 48, fd);
+	return (len);
 }
 
-int ft_putunsigned(int n)
+int	ft_puthex_low(unsigned long long n, int fd)
 {
-	int		i_itoa;
-	char	*itoa;
+	int	len;
 
-	i_itoa = 0;
-	if (n == 0)
-		i_itoa += write(1, "0", 1);
+	len = 0;
+	if (n > 15)
+	{
+		len += ft_puthex_low(n / 16, fd);
+		len += ft_puthex_low(n % 16, fd);
+	}
 	else
 	{
-		itoa = ft_itoa(n);
-		i_itoa += ft_putstr(itoa, 1);
-		free(itoa);
+		if (n > 9)
+			len += ft_putchar(n - 10 + 'a', fd);
+		else
+			len += ft_putchar(n + 48, fd);
 	}
-	return (i_itoa);
+	return (len);
+}
+
+int	ft_puthex_high(unsigned long long n, int fd)
+{
+	int len;
+
+	len = 0;
+	if (n > 15)
+	{
+		len += ft_puthex_high(n / 16, fd);
+		len += ft_puthex_high(n % 16, fd);
+	}
+	else
+	{
+		if (n > 9)
+			len += ft_putchar(n - 10 + 'A', fd);
+		else
+			len += ft_putchar(n + 48, fd);
+	}
+	return (len);
 }

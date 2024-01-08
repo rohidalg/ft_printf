@@ -14,7 +14,7 @@
 
 int	ft_options(char const *str, va_list *args)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -24,19 +24,20 @@ int	ft_options(char const *str, va_list *args)
 		else if (str[i] == 's')
 			return (ft_putstr(va_arg(*args, char *), 1));
 		else if (str[i] == 'p')
-		  	return (ft_pointer(va_arg(*args, char *), 1));
+			return (ft_putstr("0x", 1) + ft_puthex_low(va_arg(*args, uintptr_t),
+					1));
 		else if (str[i] == 'd')
-		 	return (ft_putnbr(va_arg(*args, int),1));
+			return (ft_putnbr(va_arg(*args, int), 1));
 		else if (str[i] == 'i')
-			return (ft_putnbr(va_arg(*args, int),1));
+			return (ft_putnbr(va_arg(*args, int), 1));
 		else if (str[i] == 'u')
-			return (ft_putunsigned(va_arg(*args, int)));
-		// else if (str[i] == 'x')
-		// 	return ();
-		// else if (str[i] == 'X')
-		// 	return ();
+			return (ft_putunsigned(va_arg(*args, unsigned int), 1));
+		else if (str[i] == 'x')
+			return (ft_puthex_low(va_arg(*args, unsigned int), 1));
+		else if (str[i] == 'X')
+			return (ft_puthex_high(va_arg(*args, unsigned int), 1));
 		else if (str[i] == '%')
-	 	return (ft_putchar('%', 1));
+			return (ft_putchar('%', 1));
 		i++;
 	}
 	return (i);

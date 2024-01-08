@@ -33,10 +33,31 @@ printf("/*---------------------------%%i&d---------------------------*/\n");
 
 printf("/*---------------------------%%u---------------------------*/\n");
 
-	int n_u = -200000;
+	int n_u = -1;
 	printf("       y vale %d", ft_printf("%u", n_u));
 	printf("\n");
 	printf("       y vale %d\n", printf("%u", n_u));
+
+printf("/*---------------------------%%p---------------------------*/\n");
+
+	int *pointer_p = "";
+	printf("       y vale %d", ft_printf("%p", pointer_p));
+	printf("\n");
+	printf("       y vale %d\n", printf("%p", pointer_p));
+
+printf("/*---------------------------%%x---------------------------*/\n");
+
+	int n_x = 42;
+	printf("       y vale %d", ft_printf("%x", n_x));
+	printf("\n");
+	printf("       y vale %d\n", printf("%x", n_x));
+
+printf("/*---------------------------%%X---------------------------*/\n");
+
+	int n_X = 4242;
+	printf("       y vale %d", ft_printf("%x", n_X));
+	printf("\n");
+	printf("       y vale %d\n", printf("%x", n_X));
 
 return (0);
 }

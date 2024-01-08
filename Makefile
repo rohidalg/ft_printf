@@ -7,7 +7,7 @@ cc = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCs = ft_printf.c \
-		ft_printf_functions.c
+		ft_printf_functions.c\
 
 OBJs = $(SRCs:.c=.o)
 
