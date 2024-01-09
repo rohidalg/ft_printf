@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rohidalg <rohidalg@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rohidalg <rohidalg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 19:44:37 by rohidalg          #+#    #+#             */
-/*   Updated: 2023/11/13 19:44:40 by rohidalg         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:21:02 by rohidalg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF
-# define LIBFTPRINTF
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include "libft42/libft.h"
 # include <libc.h>
 # include <stdarg.h>
 # include <stdio.h>
 # include <unistd.h>
-// # include "../libft/libft.h"
 
-extern int		ft_printf(char const *str, ...);
-extern int		ft_putchar(char c, int fd);
-extern int		ft_putstr(char *s, int fd);
-extern int		ft_nlen(int n);
-extern int		ft_putnbr(int n, int fd);
-extern size_t	ft_strlen(char const *s);
-extern int		ft_putunsigned(unsigned int n, int fd);
-extern int		ft_puthex_low(unsigned long long n, int fd);
-extern int		ft_puthex_high(unsigned long long n, int fd);
+extern int	ft_printf(char const *str, ...);
+extern int	ft_putunsigned(unsigned int n, int fd);
+extern int	ft_puthex_low(unsigned long long n, int fd);
+extern int	ft_puthex_high(unsigned long long n, int fd);
 
 #endif
